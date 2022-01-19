@@ -35,7 +35,7 @@ const ResourceEdit = ({ resource }) => {
 
 // Using getServerSideProps() to get data from dynamic page id
 export async function getServerSideProps({params}) {
-  const resData = await fetch(`http://localhost:3001/api/resources/${params.id}`);
+  const resData = await fetch(`${process.env.API_URL}/resources/${params.id}`);
   const data = await resData.json();
   
   return {
