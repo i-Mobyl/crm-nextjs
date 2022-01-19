@@ -14,7 +14,7 @@ const ActiveResource = () => {
   // Run this once when loaded
   useEffect(() => {
     const fetchActiveResource = async () => {
-      const res = await axios.get(`${process.env.API_URL}/api/activeresource`)
+      const res = await axios.get(`${process.env.API_URL}/activeresource`)
       const resource = res.data;
       const timeToFinish = parseInt(resource.timeToFinish, 10);
       
