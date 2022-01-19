@@ -12,11 +12,17 @@ const ActiveResource = () => {
   // Run this once when loaded
   useEffect(() => {
     const fetchActiveResource = async () => {
-      const res = await axios.get("api/activeresource");
-      const resource = res.data;
+      
+      try {	
+        const res = await axios.get("/api/activeresource");
+        const resource = res.data;
+      }
+      catch(rejValue){
+        //console.log('Err: ', rejValue);
+      }
       const timeToFinish = parseInt(resource.timeToFinish, 10);
       
-      const elapsedTimeInSeconds = moment().diff(moment(resource.activationTime), "seconds");
+      const elapsedTimeInSeconds = moment().diff(moment(resource.activationTime, "YYYY-MM-DD"), "seconds");
       
       const updatedTimeToFinish = (timeToFinish * 60) - elapsedTimeInSeconds;
       
@@ -35,7 +41,7 @@ const ActiveResource = () => {
 
   // After every second, decrease the number of seconds (in state) by 1.
   useEffect(() => {
-
+    
     // Change the state every second
     const interval = setTimeout(() => {
       setSeconds(seconds - 1);
@@ -51,7 +57,7 @@ const ActiveResource = () => {
 
   }, [seconds]);
 
-  // Re-use the patch to update the reosurce with a changed status field
+  // Re-use the patch to update the resource with a changed status field
   // Allow only one active resource at a time.
   const markResourceCompleted = () => {
     axios.patch("/api/resources", {...resource, status: "complete"})

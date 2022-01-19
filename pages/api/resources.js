@@ -30,7 +30,7 @@ export default async function (req, res) {
       ? `${process.env.API_URL}/resources`
       : `${process.env.API_URL}/resources/${id}`;
 
-
+    console.log("url: ", url)
 
     //return res.send("data has been rec'd");
     try {

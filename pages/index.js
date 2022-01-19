@@ -33,7 +33,7 @@ export async function getServerSideProps() {
   
   const resData = await fetch(`${process.env.API_URL}/resources`);
   const data = await resData.json();
-  console.log("This should appear on the back-end terminal, not the browser console!")
+  // console.log("This should appear on the back-end terminal, not the browser console!")
   return {
     props: {
       resources: data
