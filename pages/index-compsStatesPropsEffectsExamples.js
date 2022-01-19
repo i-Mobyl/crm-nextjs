@@ -14,8 +14,6 @@ function CompA({ myCount, myObj, myFunc, myBool, myNum }){
     console.log("CompA: Use effect");
   }, [myCount])
 
-  console.log("p1: ",myCount);
-
   return(
     <React.Fragment>
       <hr />

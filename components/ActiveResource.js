@@ -9,8 +9,6 @@ const ActiveResource = () => {
   const [resource, setResource] = useState({});
   const [seconds, setSeconds] = useState();
 
-  console.log("ActRes: ", resource);
-
   // Run this once when loaded
   useEffect(() => {
     const fetchActiveResource = async () => {
