@@ -12,17 +12,13 @@ const ActiveResource = () => {
   // Run this once when loaded
   useEffect(() => {
     const fetchActiveResource = async () => {
-      
-      try {	
-        const res = await axios.get("/api/activeresource");
-        const resource = res.data;
-      }
-      catch(rejValue){
-        //console.log('Err: ', rejValue);
-      }
+
+      const res = await axios.get("/api/activeresource");
+      const resource = res.data;
+     
       const timeToFinish = parseInt(resource.timeToFinish, 10);
       
-      const elapsedTimeInSeconds = moment().diff(moment(resource.activationTime, "YYYY-MM-DD"), "seconds");
+      const elapsedTimeInSeconds = moment().diff(moment(resource.activationTime), "seconds");
       
       const updatedTimeToFinish = (timeToFinish * 60) - elapsedTimeInSeconds;
       
@@ -68,6 +64,8 @@ const ActiveResource = () => {
   }
 
   const hasResource = resource && resource.id;
+  console.log("res: ", resource)
+  console.log("sec: ", seconds)
 
   return (
 
@@ -77,12 +75,12 @@ const ActiveResource = () => {
       </h1>
       <div className="time-wrapper">
         { hasResource &&
-          ( seconds > 0 ?
-            // Show seconds countdown
+          (seconds > 0) ?
+            
             <h2 className="elapsed-time">
               {seconds}
             </h2> :
-            // Timer elapsed - offer user Done button
+            
             <h2 className="elapsed-time">
               <button 
                 onClick={markResourceCompleted}
@@ -90,7 +88,6 @@ const ActiveResource = () => {
                 Mark as complete
               </button>
             </h2>
-          )
         }
       </div>
       {
