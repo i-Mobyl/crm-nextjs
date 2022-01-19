@@ -64,8 +64,6 @@ const ActiveResource = () => {
   }
 
   const hasResource = resource && resource.id;
-  console.log("res: ", resource)
-  console.log("sec: ", seconds)
 
   return (
 
@@ -75,7 +73,7 @@ const ActiveResource = () => {
       </h1>
       <div className="time-wrapper">
         { hasResource &&
-          (seconds > 0) ?
+          (seconds > 0 ?
             
             <h2 className="elapsed-time">
               {seconds}
@@ -88,6 +86,7 @@ const ActiveResource = () => {
                 Mark as complete
               </button>
             </h2>
+          )
         }
       </div>
       {
