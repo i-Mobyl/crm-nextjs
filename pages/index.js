@@ -15,7 +15,7 @@ function Home ({ resources }) {
   return (
     <>
       
-      <Layout>
+      <Layout page={"Home"}>
         <ResourceHighlight 
           resources={resources.slice(0,2)}
         />

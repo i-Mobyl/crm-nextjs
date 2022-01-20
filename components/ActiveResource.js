@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import moment from "moment";
 
-const ActiveResource = () => {
+const ActiveResource = ({page}) => {
 
   const [resource, setResource] = useState({});
   const [seconds, setSeconds] = useState();
+  const buttonStyle = (page === "Home") ? "button is-invisible" : "button";
 
   // Run this once when loaded
   useEffect(() => {
@@ -96,8 +97,9 @@ const ActiveResource = () => {
             Go to resource
           </a>
         </Link>:
+        
         <Link href="/">
-          <a className="button">
+          <a className={buttonStyle}>
             Go to resources
           </a>
         </Link>

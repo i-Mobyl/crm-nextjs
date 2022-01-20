@@ -5,10 +5,14 @@ import { useRouter } from "next/router";
 
 const ResourceEdit = ({ resource }) => {
 
+  // Router
+  const router = useRouter();
+
   const updateResource = (formData) => {
+    
     // Send request by proxy (resources.js)
     axios.patch("/api/resources", formData) 
-      .then(_ => alert("Updated!"))
+      .then(_ => router.push(`/resources/${formData.id}`))
       .catch((err) => {
         alert("Error: " + err?.response?.data)  // Weird
       })

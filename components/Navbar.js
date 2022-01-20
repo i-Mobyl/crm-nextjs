@@ -9,7 +9,7 @@ const Navbar = () => {
         <div className="navbar-brand">
           <Link href="/">
             <a className="navbar-item" href="../">
-              <h1 className="is-size-4 has-text-weight-bold">MY TODO BLOG-LIST</h1>
+              <h1 className="is-size-4 has-text-weight-bold">MY TODO/BLOG LIST</h1>
             </a>
           </Link>
           <span className="navbar-burger burger" data-target="navbarMenu">
@@ -34,7 +34,7 @@ const Navbar = () => {
                 Home
               </a>
             </Link>
-            {/* <Link href="/resources/new"> */}
+            {/* <Link href="/resources/new">       // REMOVED FOR PUBLIC CONSUMPTION */}
             <Link href="/">
               <a  
                 className="navbar-item is-size-5 has-text-weight-semibold">
